@@ -6,10 +6,14 @@ void mergesort(int *a, int low, int high)
     int mid;
     if (low < high)
     {
+	    
         mid=(low+high)/2;
+//Recursive Calls Made to call merge() function
         mergesort(a,low,mid);
         mergesort(a,mid+1,high);
         merge(a,low,high,mid);
+	   
+	    
     }
     return;
 }
@@ -21,12 +25,15 @@ void merge(int *a, int low, int high, int mid)
     j = mid + 1;
     while (i <= mid && j <= high)
     {
+	    //We are uodating only the largest element in a[]
         if (a[i] < a[j])
         {
             c[k] = a[i];
             k++;
             i++;
         }
+	    
+	    
         else
         {
             c[k] = a[j];
@@ -34,6 +41,8 @@ void merge(int *a, int low, int high, int mid)
             j++;
         }
     }
+	//Pushing the remaining elements in the array
+	
     while (i <= mid)
     {
         c[k] = a[i];
@@ -46,6 +55,8 @@ void merge(int *a, int low, int high, int mid)
         k++;
         j++;
     }
+	
+	
     for (i = low; i < k; i++)
     {
 	a[i] = c[i];
@@ -67,4 +78,5 @@ void main()
 	cout<<a[i]<<" ";
     }
     getch();
+//Optimized for Turbo C. Basic iterations needed to make it GCC compatible 
 }
